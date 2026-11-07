@@ -15,11 +15,32 @@ class $modify(MenuLayer) {
         
         auto bottomMenu = this->getChildByID("bottom-menu");
         
-        if (!bottomMenu) return true;
+        auto mainMenu = this->getChildByID("main-menu");
         
-        auto bottomMenu = this->getChildByID("bottom-menu");
+        auto profileMenu = this->getChildByID("profile-menu");
         
-        if (!bottomMenu) return true;
+        auto rightSideMenu = this->getChildByID("right-side-menu");
+        
+        auto socialMediaMenu = this->getChildByID("social-media-menu");
+   
+        auto moreGamesMenu = this->getChildByID("more-games-menu");
+        
+        auto closeMenu = this->getChildByID("close-menu");
+        
+        banish(bottomMenu);
+        
+        banish(mainMenu);
+        
+        banish(profileMenu);
+        
+        banish(rightSideMenu);
+        
+        banish(socialMediaMenu);
+    
+        banish(moreGamesMenu);
+
+        banish(closeMenu);
+        return true;
         
     }
-}
+};
