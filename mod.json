@@ -4,10 +4,10 @@
     "win": "2.2081",
     "android": "2.2081"
   },
-  "id": "xpteam.xpui-api",
-  "name": "experienceUI CORE",
+  "id": "prismteam.prismmod",
+  "name": "PrismGDPS",
   "version": "v1.0.0",
-  "developer": "xperienceTeam",
+  "developer": "prismTeam",
   "tags": ["interface"],
   "description": "Description",
   },
