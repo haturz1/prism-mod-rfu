@@ -12,7 +12,8 @@ class $modify(PrismMenuLayer, MenuLayer) {
         if (!MenuLayer::init()) return false;
 
         for (auto ids : {"bottom-menu", "main-menu", "profile-menu", "right-side-menu", "social-media-menu", "more-games-menu", "close-menu"}) 
-            if (auto md = this->getChildByIDRecursive(ids)) banish(md);
+            if (auto md = this->getChildByIDRecursive(ids)) 
+                banish(md);
 
         return true;
     }
