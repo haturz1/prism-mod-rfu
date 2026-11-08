@@ -7,12 +7,12 @@ void banish(CCNode* victim) {
     if (victim) victim->setVisible(false);
 }
 
-class $modify(MenuLayer) {
+class $modify(PrismMenuLayer, MenuLayer) {
     bool init() {
         if (!MenuLayer::init()) return false;
 
-        for (auto id : {"bottom-menu", "main-menu", "profile-menu", "right-side-menu", "social-media-menu", "more-games-menu", "close-menu"}) {
-            if (auto md = this->getChildByIDRecursive(id)) banish(md);
+        for (auto ids = {"bottom-menu", "main-menu", "profile-menu", "right-side-menu", "social-media-menu", "more-games-menu", "close-menu"}) {
+            if (auto md = this->getChildByIDRecursive(ids)) banish(md);
         }
 
         return true;
