@@ -1,5 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
+#include <Geode/modify/MenuGameLayer.hpp>
 
 using namespace geode::prelude;
 
