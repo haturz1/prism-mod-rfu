@@ -10,37 +10,27 @@ void banish(CCNode* victim) {
 class $modify(MenuLayer) {
     bool init() {
         if (!MenuLayer::init()) {
-            return false
+            return false;
         }
         
-        auto bottomMenu = this->getChildByID("bottom-menu");
+        for (auto ids : {"bottom-menu", "main-menu", "right-side-menu", "social-media-menu", "more-games-menu", "close-menu"}) {
+            if (auto md = this->getChildByIDRecursive(ids)) banish(md);
+        }
         
-        auto mainMenu = this->getChildByID("main-menu");
-        
-        auto profileMenu = this->getChildByID("profile-menu");
-        
-        auto rightSideMenu = this->getChildByID("right-side-menu");
-        
-        auto socialMediaMenu = this->getChildByID("social-media-menu");
-   
-        auto moreGamesMenu = this->getChildByID("more-games-menu");
-        
-        auto closeMenu = this->getChildByID("close-menu");
-        
-        banish(bottomMenu);
-        
-        banish(mainMenu);
-        
-        banish(profileMenu);
-        
-        banish(rightSideMenu);
-        
-        banish(socialMediaMenu);
-    
-        banish(moreGamesMenu);
+        return true;                     
+    }
+};
 
-        banish(closeMenu);
+class $modify(MenuGameLayer) {
+    bool init() {
+        if (!MenuGameLayer::init()) {
+            return false;
+        }
+
+        if (auto bg = this->getChildByIDRecursive("background")) {
+            bg->setColor({140, 60, 220});
+        }
+
         return true;
-        
     }
 };
