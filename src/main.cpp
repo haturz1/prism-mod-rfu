@@ -1,11 +1,10 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
-#include <Geode/modify/MenuGameLayer.hpp>
 
 using namespace geode::prelude;
 
 void banish(CCNode* victim) {
-    if (victim) victim->setVisible(false);
+    victim->setVisible(false);
 }
 
 class $modify(MenuLayer) {
@@ -13,29 +12,11 @@ class $modify(MenuLayer) {
         if (!MenuLayer::init()) {
             return false;
         }
-
-        for (auto id : {"bottom-menu", "main-menu", "profile-menu", "right-side-menu", "social-media-menu", "more-games-menu", "close-menu"}) {
-            if (auto md = this->getChildByIDRecursive(id)) banish(md);
+        
+        for (auto ids : {"bottom-menu", "main-menu", "right-side-menu", "social-media-menu", "more-games-menu", "close-menu", "main-menu-bg"}) {
+            if (auto md = this->getChildByIDRecursive(ids)) banish(md);
         }
-
-        if (auto bg = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("main-menu-bg"))) {
-            bg->setColor({140, 60, 220});
-        }
-
-        return true;
-    }
-};
-
-class $modify(MenuGameLayer) {
-    bool init() {
-        if (!MenuGameLayer::init()) {
-            return false;
-        }
-
-        if (auto bg = typeinfo_cast<CCSprite*>(this->getChildByName("background"))) {
-            bg->setColor({140, 60, 220});
-        }
-
-        return true;
+        
+        return true;                     
     }
 };
