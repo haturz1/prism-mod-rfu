@@ -28,10 +28,10 @@ class $modify(MenuGameLayer) {
             return false;
         }
 
-        if (auto bg = this->getChildByIDRecursive("background")) {
+        if (auto bg = typeinfo_cast<CCSprite*>(this->getChildByName("background"))) {
             bg->setColor({140, 60, 220});
         }
-
+        
         return true;
     }
 };
