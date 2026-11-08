@@ -5,7 +5,7 @@
 using namespace geode::prelude;
 
 void banish(CCNode* victim) {
-    victim->setVisible(false);
+    if (victim) victim->setVisible(false);
 }
 
 class $modify(MenuLayer) {
@@ -13,12 +13,16 @@ class $modify(MenuLayer) {
         if (!MenuLayer::init()) {
             return false;
         }
-        
-        for (auto ids : {"bottom-menu", "main-menu", "right-side-menu", "social-media-menu", "more-games-menu", "close-menu"}) {
-            if (auto md = this->getChildByIDRecursive(ids)) banish(md);
+
+        for (auto id : {"bottom-menu", "main-menu", "profile-menu", "right-side-menu", "social-media-menu", "more-games-menu", "close-menu"}) {
+            if (auto md = this->getChildByIDRecursive(id)) banish(md);
         }
-        
-        return true;                     
+
+        if (auto bg = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("main-menu-bg"))) {
+            bg->setColor({140, 60, 220});
+        }
+
+        return true;
     }
 };
 
@@ -31,7 +35,7 @@ class $modify(MenuGameLayer) {
         if (auto bg = typeinfo_cast<CCSprite*>(this->getChildByName("background"))) {
             bg->setColor({140, 60, 220});
         }
-        
+
         return true;
     }
 };
